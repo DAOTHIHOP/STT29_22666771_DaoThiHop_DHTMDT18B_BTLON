@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="../css/thanhvienstyle.css">
+   <style>
+    /* Định dạng màu cho liên kết đang được chọn */
+    .active-link {
+      color: rgb(206, 84, 9) ; /* Đổi sang màu mà bạn muốn, ví dụ: đỏ */
+    }
+</style>
+
+</head>
+<body>
+<!-- HEADER -->
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #638889;height: 125px;">
+  <div class="container-fluid">
+      <div class="row w-100">
+          <!-- Logo -->
+          <div class="col-3 d-flex align-items-center">
+              <a a class="navbar-brand" href="../html/Trangchu.html">
+                  <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.3);">
+              </a>
+          </div>
+
+          <!-- Title and Slogan -->
+          <div class="col-6 d-flex text-white flex-column justify-content-center text-center">
+              <h1 class="display-4" style="color: #eff9d7;"><b>E-Bike Paradise</b></h1>
+              <p><i>"Chinh phục mọi nẻo đường với xe đạp điện"</i></p>
+          </div>
+
+            <!-- Cart và Login -->
+            <div class="col-3 d-flex align-items-center justify-content-around">
+              <!-- Add sản phẩm -->
+              <div class="add me-5">
+                  <a href="Bosuutap.html">
+                      <img src="../img/add.png" alt="add" width="55px"/>
+                  </a>
+              </div>
+          
+              <!-- Cart -->
+              <div class="cart me-5">  
+                  <a href="cart.html">
+                      <img src="../img/cart.png" alt="Giỏ hàng" width="65px"> 
+                  </a>
+              </div>
+          
+              <!-- Login -->
+              <div class="acc me-3">
+                  <a href="Trangchu.html"
+                    ><img src="../img/home.png" alt="acc" width="55px"
+                  /></a>
+                </div>
+          </div>
+      </div>
+  </div>
+</nav>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="container-fluid" style="padding-left: 170px;">
+      <!-- Logo (nếu có) và các mục điều hướng -->
+      <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item ms-5 me-5 "> <!-- Cách đều bằng me-3 -->
+              <a class="nav-link " href="../html/Trangchu.html">Trang chủ</a>
+          </li>
+          <li class="nav-item dropdown me-5 ms-5"> <!-- Cách đều bằng me-3 -->
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" >Bộ sưu tập</a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../html/Yadea.html">Thương hiệu Yadea</a></li>
+                  <li><a class="dropdown-item" href="../html/Osakar.html">Thương hiệu Osakar</a></li>
+                  <li><a class="dropdown-item" href="../html/DkBike.html">Thương hiệu DkBike</a></li>
+              </ul>
+          </li>
+          
+          <li class="nav-item dropdown ms-5 me-5"> <!-- Cách đều bằng me-3 -->
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Tin tức</a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../html/TinKhuyenMai.html">Tin khuyến mãi</a></li>
+                  <li><a class="dropdown-item" href="../html/VideoReview.html">Video review</a></li>
+              </ul>
+          </li>
+          <li class="nav-item ms-5"> <!-- Không cần khoảng cách thêm cho item cuối -->
+              <a class="nav-link" href="../html/VeChungToi.html">Về chúng tôi</a>
+          </li>
+      </ul>
+  
+ 
+
+      <!-- Form tìm kiếm bên phải -->
+      <form class="d-flex " style="width: auto;">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" style="width: 200px;">
+          <button class="btn p-0" type="submit" style="width: 30px; height: 30px;">
+              <img src="../img/icon tìm kiếm.png" alt="Tìm" width="30px" height="30px">
+          </button>
+      </form>
+  </div>
+</nav>
+
+<script>
+  // Lấy tất cả các liên kết trong menu điều hướng
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Duyệt qua từng liên kết
+  navLinks.forEach(link => {
+      // Kiểm tra nếu URL hiện tại trùng với href của liên kết
+      if (link.href === window.location.href) {
+          // Thêm lớp CSS để đổi màu khi trang hiện tại được chọn
+          link.classList.add('active-link');
+      }
+
+      // Thêm sự kiện khi người dùng nhấn vào một liên kết khác
+      link.addEventListener('click', function() {
+          // Loại bỏ lớp 'active-link' khỏi tất cả các liên kết
+          navLinks.forEach(link => link.classList.remove('active-link'));
+
+          // Thêm lớp 'active-link' vào liên kết được nhấn
+          this.classList.add('active-link');
+      });
+  });
+</script>
+
+<!-- Nội dung -->
+<div class="outer-container">  
+         <div class="wrapper">
+           <div class="title">
+             <h1><b>MÔN: HỆ THỐNG VÀ CÔNG NGHỆ WEB</b></h1>
+             <a href="./home.html"
+               ><img style="width: 400px" src="../img/logohop.jpg" alt="E-Bike Paradise"
+             /></a>
+             <div class="temp-2"></div>
+           </div>
+           <div class="container">
+             <div class="content">
+               <div class="first">
+                 <div class="first-left">
+                   <p class="first-left-title">Xin chào, Mình là:</p>
+                   <h5>ĐÀO THỊ HỢP</h5>
+                   <p class="first-left-sub">MSSV: 22666771</p>
+                   <p class="first-left-sub">Thông tin liên hệ:</p>
+                   <p class="first-left-sub">atruc921@gmail.com@gmail.com <br> 0394396273</p>
+                 </div>
+
+                 <div class="first-right">
+                   <div class="first-right-icon">
+                     <i class="fa fa-thumbtack"></i>
+                   </div>
+                   <div class="first-right-content">
+                     <div class="first-img">
+                       <img src="../img/av1.jpg" alt="" />
+                     </div>
+                   </div>
+                   <div class="first-right-content-2">
+                     <div class="first-img-2">
+                       <img src="../img/av2.jpg" alt="" />
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               
+               <div class="second">
+                 <div class="second-left">
+                   <div class="second-left-title">
+                     <p>Cute</p>
+                   </div>
+                   <div class="second-left-img">
+                     <img src="../img/av3.jpg" alt="" />
+                   </div>
+                   <div class="second-left-content">
+                     <p>
+                       🤩 Xin chào mọi người, mình là Thị Hợp đây. Một sinh viên đầy năng lượng, chăm chỉ 
+                      và ham học hỏi, có tinh thần trách nhiệm cao trong học tập. Là sinh viên năm 3 chuyên ngành của
+                       mình là Thương Mại Điện Tử. Sở thích chính của mình là xem phim, và mình luôn muốn khám phá thêm về thế giới xung
+                       quanh.
+     
+                     </p>
+                   </div>
+                   <div class="second-left-icon">
+                     <i class="fab fa-instagram"></i>
+                     <i class="fab fa-facebook"></i>
+                     <i class="fab fa-whatsapp-square"></i>
+                     <i class="fab fa-skype"></i>
+                   </div>
+                 </div>
+                 <div class="second-right">
+                   <div class="second-right-up">
+                     <h2>Trách nhiệm cá nhân:</h2>
+                     <p><span>1</span>Chủ động học tập</p>
+                     <p><span>2</span> Quản lý thời gian hiệu quả</p>
+                     <p><span>3</span> Luôn tích cực và sáng tạo</p>
+                     <p><span>4</span> Phát triển kỹ năng cá nhân</p>
+                   </div>
+
+                   <div class="second-right-down">
+                     <i class="fa fa-quote-right"></i>
+                     <p>
+                       Mình rất vui vì được học hỏi và có thêm được nhiều kiến thức về
+                        môn Hệ thống và Công nghệ Web của thầy Đặng Văn Thuận, và mong muốn càng
+                         được tiếp thu thêm những điều thú vị từ môn học này. Mình hy vọng 
+                         rằng khoảng thời gian còn lại của thời sinh viên thật vui vẻ và có thêm nhiều kỉ
+                         niệm cùng bạn bè và trường Đại học Công nghiệp này và sẽ cố gắng hoàn thành tốt được
+                          môn Lập trình Web, ra trường đúng hạn và gặt hái được nhiều thành công trong cuộc sống.
+               
+                     </p>
+                   </div>
+                   
+                 </div>
+               </div>
+             </div>
+         </div>
+        </div>    
+ </div>  
+      
+<!-- Footer -->
+<footer class="text-white mt-5" style="background-color: #638889;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Dòng đầu: 4 cột -->
+            <div class="col-md-3 d-flex align-items-center py-3">
+                <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.2); margin-right: 10px;"> <!-- Hình ảnh logo -->
+                <span style="font-size: 1.3rem; color: hsl(78, 75%, 91%); font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b> E-Bike Paradise</b> </span> <!-- Tên cửa hàng -->
+            </div>
+
+            <!-- Cột 2: Chính sách bảo mật -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Chính sách bảo mật</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#" class="text-white">Chính sách đưa đón và giao hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Liên hệ với chúng tôi -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Liên hệ với chúng tôi</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">Địa chỉ: 123 Đường ABC, Quận Gò Vấp, TP.HCM</li>
+                    <li class="mb-2">Hotline: 0123 456 789</li>
+                    <li>Email: abc@gmail.com</li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Mạng xã hội -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Mạng xã hội</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <li><a href="#" class="text-white"><i class="bi bi-tiktok"></i> TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng thứ hai: Thông tin bản quyền -->
+        <div class="text-center py-2 " style="background-color: #4f6d6e;" > <!-- Màu xám nhạt -->
+            <p class="mb-0" style="margin-bottom: 0;">&copy; 2024 E-Bike Paradise. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+    

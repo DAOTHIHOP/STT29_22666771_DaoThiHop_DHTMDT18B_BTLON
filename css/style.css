@@ -1,0 +1,174 @@
+
+        /* Hiệu ứng chữ cho header */
+        body {
+            font-family: Arial, sans-serif;
+        
+        }
+        .nav-link {
+            text-transform: uppercase; /* Chữ in hoa */
+            font-weight: bold; /* Chữ in đậm */
+            color: #1a1f9c;
+        }
+        .nav-link:hover {
+            text-decoration: underline; /* Hiện dấu gạch chân khi hover */
+        }
+        .nav-tabs {
+            margin: 0 auto; /* Căn giữa nav-tabs */
+        }
+        .dropdown-menu {
+            padding: 0; /* Giảm khoảng cách mặc định của dropdown menu */
+        }
+        .dropdown-item {
+            padding: 10px 20px; /* Thêm spacing cho các mục trong dropdown */
+        }
+  
+        .featured-title {
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 2.5em;
+        margin: 30px 0; /* Cách carousel 1 khoảng */
+        display: block; /* Đảm bảo tiêu đề chiếm toàn bộ chiều rộng */
+    }
+    
+    
+    /*Điều chỉnh mũi tên Carousel*/
+    .carousel {
+        margin-top: 1;
+    
+    }
+   
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #ffbd59; /* Màu cho icon mũi tên */
+        border-radius: 100%; /* Bo tròn icon */
+    }
+    .carousel-control-prev {
+        left: 20px; /* Căn lề trái */
+    }
+
+    .carousel-control-next {
+        right: 10px; /* Căn lề phải */
+    }
+
+    
+/*CSS CHO PHẦN SẢN PHẨM NỔI BẬT*/
+.product-card {
+    border: 1.5px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease;
+    display: flex; /* Thay đổi để sử dụng flexbox cho card */
+    flex-direction: column; 
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    height: 430px; 
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    height: auto;
+    max-width: 60%; /* Giữ nguyên max-width */
+    border-radius: 8px;
+    margin: 0 auto; /* Căn giữa hình ảnh */
+}
+
+    
+    .product-price {
+        color: #ff4500;
+        font-size: 1.3rem;/* Giảm kích thước chữ giá */
+        font-weight: bold;
+    }
+    
+    .product-old-price {
+        text-decoration: line-through;
+        color: #999;
+       
+    }
+    
+    .product-info {
+        font-size: 0.8rem; /* Giảm kích thước chữ */
+        color: #666;
+        margin: 0px 0; /* Giảm khoảng cách */
+        
+    }
+    /*điều chỉnh tag Hot trên sản phẩm*/
+    .badge-new {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ff4500;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    
+
+    .btn-buy, .btn-installment {
+        width: 70%;
+        margin: 4px ;
+        padding: 4px; /* Giảm padding */
+        font-size: 0.8rem; /* Giảm kích thước font */
+        border-radius: 5px; /* Điều chỉnh bo góc */}
+    
+/* CÁC TRANG SẢN PHẨM */       
+    /* Hiệu ứng click */
+    .product-card:active {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+
+    .thumbnail {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .thumbnail:hover {
+        transform: scale(1.05);
+    }
+ 
+    
+    .product-title-1 {
+        font-size: 2.8rem;
+        font-weight: bold;
+    }
+    
+    .product-description {
+        margin-top: 20px;
+    }
+    
+    .btn-group .btn {
+        margin-right: 10px;
+    }
+
+    /* KHUYẾN MÃI*/
+    .promo-item {
+        border: 2px solid #ddd; /* Màu viền mặc định */
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; /* Thêm hiệu ứng cho border */
+    }
+    
+    .promo-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        border-color: #003366; /* Đổi màu viền sang xanh coban khi hover */
+    }
+    
+    .text-center {
+        text-align: justify; /* Căn giữa nội dung trong <p> */
+    }
+    
+  /* FORM PHẢN HỒI KHÁCH HÀNG*/
+/* Thêm màu khung cho các trường hợp nhập đúng */
+.is-valid {
+    border-color: #28a745; /* Màu xanh cho khung đúng */
+}
+.is-invalid {
+    border-color: #dc3545; /* Màu đỏ cho khung lỗi */
+}

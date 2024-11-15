@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../css/style.css">
+   <style>
+    /* Định dạng màu cho liên kết đang được chọn */
+    .active-link {
+      color: rgb(206, 84, 9) ; /* Đổi sang màu mà bạn muốn, ví dụ: đỏ */
+    }
+</style>
+</head>
+
+<body>
+<!-- HEADER -->
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #638889;height: 125px;">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <!-- Logo -->
+            <div class="col-3 d-flex align-items-center">
+                <a class="navbar-brand" href="../html/Trangchu.html">
+                    <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.3);">
+                </a>
+            </div>
+
+            <!-- Title and Slogan -->
+            <div class="col-6 d-flex text-white flex-column justify-content-center text-center">
+                <h1 class="display-4" style="color: #eff9d7;"><b>E-Bike Paradise</b></h1>
+                <p><i>"Chinh phục mọi nẻo đường với xe đạp điện"</i></p>
+            </div>
+
+              <!-- Cart và Login -->
+              <div class="col-3 d-flex align-items-center justify-content-around">
+                <!-- Add sản phẩm -->
+                <div class="add me-5">
+                    <a href="Bosuutap.html">
+                        <img src="../img/add.png" alt="add" width="55px"/>
+                    </a>
+                </div>
+            
+                <!-- Cart -->
+                <div class="cart me-5">  
+                    <a href="cart.html">
+                        <img src="../img/cart.png" alt="Giỏ hàng" width="65px"> 
+                    </a>
+                </div>
+            
+                <!-- Login -->
+                <div class="acc me-3">
+                    <a href="Trangchu.html"
+                      ><img src="../img/home.png" alt="acc" width="55px"
+                    /></a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid" style="padding-left: 170px;">
+        <!-- Logo (nếu có) và các mục điều hướng -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item ms-5 me-5 "> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link " href="../html/Trangchu.html">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown me-5 ms-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" >Bộ sưu tập</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/Yadea.html">Thương hiệu Yadea</a></li>
+                    <li><a class="dropdown-item" href="../html/Osakar.html">Thương hiệu Osakar</a></li>
+                    <li><a class="dropdown-item" href="../html/DkBike.html">Thương hiệu DkBike</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown ms-5 me-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Tin tức</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/TinKhuyenMai.html">Tin khuyến mãi</a></li>
+                    <li><a class="dropdown-item" href="../html/VideoReview.html">Video review</a></li>
+                </ul>
+            </li>
+            <li class="nav-item ms-5"> <!-- Không cần khoảng cách thêm cho item cuối -->
+                <a class="nav-link" href="../html/VeChungToi.html">Về chúng tôi</a>
+            </li>
+        </ul>
+    
+   
+
+        <!-- Form tìm kiếm bên phải -->
+        <form class="d-flex " style="width: auto;">
+            <input class="form-control form-control-sm me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" style="width: 200px;">
+            <button class="btn p-0" type="submit" style="width: 30px; height: 30px;">
+                <img src="../img/icon tìm kiếm.png" alt="Tìm" width="30px" height="30px">
+            </button>
+        </form>
+    </div>
+</nav>
+<script>
+    // Lấy tất cả các liên kết trong menu điều hướng
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Duyệt qua từng liên kết
+    navLinks.forEach(link => {
+        // Kiểm tra nếu URL hiện tại trùng với href của liên kết
+        if (link.href === window.location.href) {
+            // Thêm lớp CSS để đổi màu khi trang hiện tại được chọn
+            link.classList.add('active-link');
+        }
+
+        // Thêm sự kiện khi người dùng nhấn vào một liên kết khác
+        link.addEventListener('click', function() {
+            // Loại bỏ lớp 'active-link' khỏi tất cả các liên kết
+            navLinks.forEach(link => link.classList.remove('active-link'));
+
+            // Thêm lớp 'active-link' vào liên kết được nhấn
+            this.classList.add('active-link');
+        });
+    });
+</script>
+
+<!-- Nội dung -->
+<div class="container my-5">
+    <div class="promo-header">
+        <h2 class="text-start mt-2 mb-3" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2.3rem;font-weight: bold;">Giới thiệu Bạn mới - Nhận tới Tiền Triệu cùng E-Bike Paradise</h2>
+    </div>
+    <div class="promo-content">
+        <img src="../img/1.tin khuyến mãi.jpg" alt="Khuyến mãi 1" class="promo-image img-fluid">
+        <h4 style="color: midnightblue"><b>1. Giới thiệu Bạn mới - Nhận tới Tiền Triệu</b></h4>
+        <p>Giới thiệu thành viên mới đến với Zalo OA của Xe Điện TỐT, khách hàng có cơ hội rinh quà tặng cực khủng. Với mỗi lượt mời bạn thành công, bạn sẽ nhận ngay bộ quà VIP lên đến 5 triệu đồng không giới hạn.</p>
+        <ul>
+            <li><b>Điều kiện áp dụng:</b> Tất cả khách hàng đã mua hàng tại Hệ thống Xe Điện TỐT.</li>
+            <li><b>Phạm vi áp dụng:</b> Toàn bộ hệ thống E-Bike Paradise & Bán hàng Online.</li>
+            <li><b>Thời gian áp dụng:</b> Từ ngày 15/03/2024 cho đến khi có thông báo mới.</li>
+        </ul>
+        
+        <h4 style="color: midnightblue; margin-top: 40px;" ><b>2. Đối tượng tham gia</b></h4>
+        <ul>
+            <li><b>Người giới thiệu:</b> Người giới thiệu hợp lệ là Khách hàng đã từng mua hàng tại Hệ thống Xe Điện TỐT và nhận được thông báo trên Zalo E-Bike Paradise về chương trình</li>
+            <li><b>Người được giới thiệu:</b> Người được giới thiệu hợp lệ là Khách hàng chưa từng mua hàng tại Hệ thống E-Bike Paradise trước thời gian diễn ra chương trình.</li>
+        </ul>
+        
+        <h4 style="color: midnightblue; margin-top: 40px;" ><b>3. Nội dung Chương trình</b></h4>
+        <p><b>Dành cho người giới thiệu:</b><br>
+            Trở thành hội viên của kênh Zalo OA Xe Điện TỐT, Quý khách hàng sẽ nhận được ưu đãi lên đến 5 triệu đồng
+             khi giới thiệu người mới, với mỗi lượt giới thiệu thành công bạn sẽ nhận được 100 điểm tương đương 100.000đ. <br>
+            
+            Để giới thiệu bạn bè người thân nhận quà cực khủng, bạn thực hiện các bước sau: <br>
+        
+            <ul>
+                <li><b>Bước 1:</b> Ấn chọn mục giới thiệu bạn mới</li>
+                <li><b>Bước 2: </b>Màn hình sẽ hiển thị một mã bao gồm số và chữ, ấn chọn sao chép</li>
+                <li><b>Bước 3:</b>Chia sẻ mã này đến cho người thân và bạn bè của bạn</li>
+            </ul>
+            Sau khi bạn mới thực hiện thành công giao dịch qua mã giới thiệu bạn cung cấp, 
+            hệ thống sẽ tự động cộng điểm tích lũy vào thẻ thành viên của bạn. Bạn có thể sử dụng mã giới thiệu không giới hạn,
+             qua đó số điểm tích lũy của bạn có thể lên đến con số 5 triệu đồng cho đơn hàng lần sau.</p><br>
+          
+        <h5 style="color: midnightblue; text-decoration: underline;" ><b>Lưu ý:</b></h5>
+        <ul>
+            <li>Sau khi thực hiện thành công hoá đơn đầu tiên khách hàng mới vẫn được tích lũy điểm như thường lệ với mỗi
+                 100.000 vnđ thanh toán Quý khách sẽ nhận được 1 điểm, số điểm này sẽ được sử dụng cho hoá đơn kế tiếp.</li>
+            <li>Mỗi khách hàng được giới thiệu chỉ được sử dụng mã giới thiệu cho một hoá đơn thanh toán.</li>
+        
+        </ul>
+        
+        <p style="margin-top: 40px; font-family:'Times New Roman', Times, serif ;font-weight: bolder;">
+
+            Chi tiết xin liên hệ qua hotline: 0888 337 000 hoặc email: cskh@EBikeParadise.vn
+        </p>
+    </div>
+    <div class="text-center my-4">
+        <a href="../html/TinKhuyenMai.html" class="btn btn-primary">Quay lại trang khuyến mãi</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-white mt-5" style="background-color: #638889; padding: 0; margin: 0;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Dòng đầu: 4 cột -->
+            <div class="col-md-3 d-flex align-items-center py-3">
+                <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.2); margin-right: 10px;"> <!-- Hình ảnh logo -->
+                <span style="font-size: 1.3rem; color: hsl(78, 75%, 91%); font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b> E-Bike Paradise</b> </span> <!-- Tên cửa hàng -->
+            </div>
+
+            <!-- Cột 2: Chính sách bảo mật -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Chính sách bảo mật</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#" class="text-white">Chính sách đưa đón và giao hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Liên hệ với chúng tôi -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Liên hệ với chúng tôi</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">Địa chỉ: 123 Đường ABC, Quận Gò Vấp, TP.HCM</li>
+                    <li class="mb-2">Hotline: 0123 456 789</li>
+                    <li>Email: abc@gmail.com</li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Mạng xã hội -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Mạng xã hội</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <li><a href="#" class="text-white"><i class="bi bi-tiktok"></i> TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng thứ hai: Thông tin bản quyền -->
+        <div class="text-center py-2 " style="background-color: #4f6d6e;" > <!-- Màu xám nhạt -->
+            <p class="mb-0" style="margin-bottom: 0;">&copy; 2024 E-Bike Paradise. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

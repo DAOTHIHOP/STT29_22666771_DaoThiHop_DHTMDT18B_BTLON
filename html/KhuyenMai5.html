@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../css/style.css">
+   <style>
+    /* Định dạng màu cho liên kết đang được chọn */
+    .active-link {
+      color: rgb(206, 84, 9) ; /* Đổi sang màu mà bạn muốn, ví dụ: đỏ */
+    }
+</style>
+</head>
+
+<body>
+<!-- HEADER -->
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #638889;height: 125px;">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <!-- Logo -->
+            <div class="col-3 d-flex align-items-center">
+                <a class="navbar-brand" href="../html/Trangchu.html">
+                    <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.3);">
+                </a>
+            </div>
+
+            <!-- Title and Slogan -->
+            <div class="col-6 d-flex text-white flex-column justify-content-center text-center">
+                <h1 class="display-4" style="color: #eff9d7;"><b>E-Bike Paradise</b></h1>
+                <p><i>"Chinh phục mọi nẻo đường với xe đạp điện"</i></p>
+            </div>
+
+              <!-- Cart và Login -->
+              <div class="col-3 d-flex align-items-center justify-content-around">
+                <!-- Add sản phẩm -->
+                <div class="add me-5">
+                    <a href="Bosuutap.html">
+                        <img src="../img/add.png" alt="add" width="55px"/>
+                    </a>
+                </div>
+            
+                <!-- Cart -->
+                <div class="cart me-5">  
+                    <a href="cart.html">
+                        <img src="../img/cart.png" alt="Giỏ hàng" width="65px"> 
+                    </a>
+                </div>
+            
+                <!-- Login -->
+                <div class="acc me-3">
+                    <a href="Trangchu.html"
+                      ><img src="../img/home.png" alt="acc" width="55px"
+                    /></a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid" style="padding-left: 170px;">
+        <!-- Logo (nếu có) và các mục điều hướng -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item ms-5 me-5 "> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link " href="../html/Trangchu.html">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown me-5 ms-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" >Bộ sưu tập</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/Yadea.html">Thương hiệu Yadea</a></li>
+                    <li><a class="dropdown-item" href="../html/Osakar.html">Thương hiệu Osakar</a></li>
+                    <li><a class="dropdown-item" href="../html/DkBike.html">Thương hiệu DkBike</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown ms-5 me-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Tin tức</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/TinKhuyenMai.html">Tin khuyến mãi</a></li>
+                    <li><a class="dropdown-item" href="../html/VideoReview.html">Video review</a></li>
+                </ul>
+            </li>
+            <li class="nav-item ms-5"> <!-- Không cần khoảng cách thêm cho item cuối -->
+                <a class="nav-link" href="../html/VeChungToi.html">Về chúng tôi</a>
+            </li>
+        </ul>
+    
+   
+
+        <!-- Form tìm kiếm bên phải -->
+        <form class="d-flex " style="width: auto;">
+            <input class="form-control form-control-sm me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" style="width: 200px;">
+            <button class="btn p-0" type="submit" style="width: 30px; height: 30px;">
+                <img src="../img/icon tìm kiếm.png" alt="Tìm" width="30px" height="30px">
+            </button>
+        </form>
+    </div>
+</nav>
+<script>
+    // Lấy tất cả các liên kết trong menu điều hướng
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Duyệt qua từng liên kết
+    navLinks.forEach(link => {
+        // Kiểm tra nếu URL hiện tại trùng với href của liên kết
+        if (link.href === window.location.href) {
+            // Thêm lớp CSS để đổi màu khi trang hiện tại được chọn
+            link.classList.add('active-link');
+        }
+
+        // Thêm sự kiện khi người dùng nhấn vào một liên kết khác
+        link.addEventListener('click', function() {
+            // Loại bỏ lớp 'active-link' khỏi tất cả các liên kết
+            navLinks.forEach(link => link.classList.remove('active-link'));
+
+            // Thêm lớp 'active-link' vào liên kết được nhấn
+            this.classList.add('active-link');
+        });
+    });
+</script>
+
+<!-- Nội dung -->
+<div class="container my-5">
+    <div class="promo-header">
+        <h2 class="text-start mt-2 mb-3" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2.3rem;font-weight: bold;">
+            Chào Đón NOEL - Tri Ân Khách Hàng: Mua Xe DKBike tặng ngay Bộ Quà Tặng Giáng Sinh trị giá đến 1 triệu đồng</h2>
+    </div>
+    <div class="promo-content">
+        <img src="../img/5.5.tinkhuyenmai.jpg" alt="Khuyến mãi 1" class="promo-image img-fluid" style="display: block; margin: 0 auto; max-width: 50%; height: auto;">
+        <h3 style="color: midnightblue; padding-top: 30px;"><b>1. Mua Xe DKBike tặng ngay Bộ Quà Tặng Giáng Sinh trị giá đến 1 triệu đồng</b></h3>
+        <p>Nhân dịp chào đón Giáng Sinh, E-Bike Paradise phối hợp cùng với DKBike đưa ra khuyến mại lớn trên toàn quốc. Theo đó, quý khách hàng sẽ có nhiều 
+            cơ hội mua sắm, trải nghiệm sản phẩm xe điện, xe ga 50cc của Xe Điện TỐT với mức giảm giá sâu, cùng với nhiều ưu đãi trong chương trình
+            <b> “Chào Đón NOEL - Tri Ân Khách Hàng: Mua Xe DKBike tặng ngay Bộ Quà Tặng Giáng Sinh trị giá đến 1 triệu đồng"</b>, khuyến mại áp dụng từ 08/12/2024
+            đến khi hết quà tặng. Hứa hẹn đây sẽ là dịp kích cầu lớn đối với thị trường xe điện trong dịp cuối năm này. </p>
+
+    
+        <h4 style="color: midnightblue; margin-top: 30px;" ><b>2.Thể lệ Chương trình Khuyến mại</b></h4>
+        <p>Khi khách hàng đến trải nghiệm mô hình tiêu chuẩn 3S tại E-Bike Paradise mua xe điện, xe đạp điện,
+             xe máy điện, xe ga 50cc DKBike bất kỳ, quý khách được tặng ngay "Bộ Quà Tặng Giáng Sinh trị giá đến 1 triệu đồng" cụ thể bao gồm:</p>
+             <ol style="padding-left: 80px;">
+                <li>Mũ bảo hiểm chính hãng DKBike</li>
+                <li>Bình nước cao cấp</li>
+                <li>Túi Canvas thời trang</li>
+             </ol>
+             
+        <ul style="padding-left: 10px;" >
+            <li><b>Thời gian áp dụng:</b>Từ ngày 01/09 đến hết ngày 15/09/2024</li>
+            <li><b>Phạm vi áp dụng:</b> Toàn bộ hệ thống  & Bán hàng Online.</li>
+            <li><b>Đối tượng áp dụng: </b> Tất cả khách hàng mua xe DKBike bất  kỳ.</li>
+            <li><b>Hình thức: </b> Quà tặng kèm theo xe.</li>
+        </ul>
+
+          
+        <h4 style="color: midnightblue; margin-top: 30px;" ><b>3. Tặng Quạt Tản Fuji Cao Cấp Trị Giá 1 Triệu Đồng</b></h4>
+        <p>Ngoài tặng Voucher giảm giá lên đến 1 triệu đồng trực tiếp vào giá trị sản phẩm, Xe Điện TỐT còn mang đến cho khách hàng 
+            lựa chọn ƯU ĐÃI thứ 2 Tặng Quạt Tản Fuji Cao Cấp Trị Giá 1 Triệu Đồng khi mua các dòng xe máy điện mới của VinFast: VinFast Evo 200, 
+            VinFast Evo 200 Lite, VinFast Feliz S, VinFast Klara S2, VinFast Vento S, VinFast Theon S. </p>
+        <p>
+            Đừng bỏ lỡ cơ hội này! Chương trình khuyến mãi "Cơn Mưa Sale Hè" chỉ diễn ra trong một thời gian giới hạn. Hãy nhanh tay đến 
+            Showroom VinFast Xe Điện TỐT hoặc liên hệ qua hotline 0888 337 000 để đặt hàng ngay hôm nay và trải nghiệm những sản phẩm xuất sắc của VinFast.
+        </p>
+
+
+        <p style="margin-top: 40px; font-family:'Times New Roman', Times, serif ;font-weight: bolder;">
+
+            Chi tiết xin liên hệ qua hotline: 0888 337 000 hoặc email: cskh@EBikeParadise.vn
+        </p>
+    </div>
+
+    <div class="text-center my-4">
+        <a href="../html/TinKhuyenMai.html" class="btn btn-primary">Quay lại trang khuyến mãi</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-white mt-5" style="background-color: #638889; padding: 0; margin: 0;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Dòng đầu: 4 cột -->
+            <div class="col-md-3 d-flex align-items-center py-3">
+                <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.2); margin-right: 10px;"> <!-- Hình ảnh logo -->
+                <span style="font-size: 1.3rem; color: hsl(78, 75%, 91%); font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b> E-Bike Paradise</b> </span> <!-- Tên cửa hàng -->
+            </div>
+
+            <!-- Cột 2: Chính sách bảo mật -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Chính sách bảo mật</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#" class="text-white">Chính sách đưa đón và giao hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Liên hệ với chúng tôi -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Liên hệ với chúng tôi</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">Địa chỉ: 123 Đường ABC, Quận Gò Vấp, TP.HCM</li>
+                    <li class="mb-2">Hotline: 0123 456 789</li>
+                    <li>Email: abc@gmail.com</li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Mạng xã hội -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Mạng xã hội</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <li><a href="#" class="text-white"><i class="bi bi-tiktok"></i> TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng thứ hai: Thông tin bản quyền -->
+        <div class="text-center py-2 " style="background-color: #4f6d6e;" > <!-- Màu xám nhạt -->
+            <p class="mb-0" style="margin-bottom: 0;">&copy; 2024 E-Bike Paradise. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

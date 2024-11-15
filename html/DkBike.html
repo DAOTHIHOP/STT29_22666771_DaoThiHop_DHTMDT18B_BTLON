@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../css/style.css">
+   <style>
+    /* Định dạng màu cho liên kết đang được chọn */
+    .active-link {
+      color: rgb(206, 84, 9) ; /* Đổi sang màu mà bạn muốn, ví dụ: đỏ */
+    }
+</style>
+
+</head>
+
+<body>
+<!-- HEADER -->
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #638889;height: 125px;">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <!-- Logo -->
+            <div class="col-3 d-flex align-items-center">
+                <a class="navbar-brand" href="../html/Trangchu.html">
+                    <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.3);">
+                </a>
+            </div>
+
+            <!-- Title and Slogan -->
+            <div class="col-6 d-flex text-white flex-column justify-content-center text-center">
+                <h1 class="display-4" style="color: #eff9d7;"><b>E-Bike Paradise</b></h1>
+                <p><i>"Chinh phục mọi nẻo đường với xe đạp điện"</i></p>
+            </div>
+
+            <div class="col-3 d-flex align-items-center justify-content-between">
+                <!-- Công tắc chuyển đổi sáng/tối -->
+                <form action="/action_page.php" class="me-3 ">
+                     <div class="form-check form-switch">
+                         <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
+                         <label class="form-check-label text-white" for="mySwitch">Dark Mode</label>
+                     </div>
+                 </form>
+             
+                 <!-- Cart -->
+                 <div class="cart me-4">  
+                     <a href="cart.html">
+                         <img src="../img/cart.png" alt="Giỏ hàng" width="60px"> 
+                     </a>
+                 </div>
+             
+                 <!-- Login -->
+                 <div class="login">
+                     <a href="../html/Dangnhap.html" class="text-white text-decoration-none">
+                         <button type="button" class="btn btn-warning btn-sm" style="padding: 10px 18px;">Đăng nhập</button>
+                     </a>
+                 </div>
+             </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid" style="padding-left: 170px;">
+        <!-- Logo (nếu có) và các mục điều hướng -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item ms-5 me-5 "> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link " href="../html/Trangchu.html">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown me-5 ms-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" >Bộ sưu tập</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/Yadea.html">Thương hiệu Yadea</a></li>
+                    <li><a class="dropdown-item" href="../html/Osakar.html">Thương hiệu Osakar</a></li>
+                    <li><a class="dropdown-item" href="../html/DkBike.html">Thương hiệu DkBike</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item dropdown ms-5 me-5"> <!-- Cách đều bằng me-3 -->
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Tin tức</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../html/TinKhuyenMai.html">Tin khuyến mãi</a></li>
+                    <li><a class="dropdown-item" href="../html/VideoReview.html">Video review</a></li>
+                </ul>
+            </li>
+            <li class="nav-item ms-5"> <!-- Không cần khoảng cách thêm cho item cuối -->
+                <a class="nav-link" href="../html/VeChungToi.html">Về chúng tôi</a>
+            </li>
+        </ul>
+    
+   
+
+        <!-- Form tìm kiếm bên phải -->
+        <form class="d-flex " style="width: auto;">
+            <input class="form-control form-control-sm me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search" style="width: 200px;">
+            <button class="btn p-0" type="submit" style="width: 30px; height: 30px;">
+                <img src="../img/icon tìm kiếm.png" alt="Tìm" width="30px" height="30px">
+            </button>
+        </form>
+    </div>
+</nav>
+<script>
+    // Lấy tất cả các liên kết trong menu điều hướng
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Duyệt qua từng liên kết
+    navLinks.forEach(link => {
+        // Kiểm tra nếu URL hiện tại trùng với href của liên kết
+        if (link.href === window.location.href) {
+            // Thêm lớp CSS để đổi màu khi trang hiện tại được chọn
+            link.classList.add('active-link');
+        }
+
+        // Thêm sự kiện khi người dùng nhấn vào một liên kết khác
+        link.addEventListener('click', function() {
+            // Loại bỏ lớp 'active-link' khỏi tất cả các liên kết
+            navLinks.forEach(link => link.classList.remove('active-link'));
+
+            // Thêm lớp 'active-link' vào liên kết được nhấn
+            this.classList.add('active-link');
+        });
+    });
+</script>
+<!-- Carousel -->
+<div class="container-fluid p-0 text-center"> <!-- Thêm class container và text-center -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../img/baner1.png" alt="baner1" style="height:450px; width: 1470px; object-fit: cover;">
+            </div>
+            <div class="carousel-item ">
+                <img src="../img/banner2.png" alt="banner2" style="height:450px; width: 1470px; object-fit: cover;">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/banner3.png" alt="banner3" style="height:450px; width: 1470px; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Nút điều khiển -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Tiêu đề SẢN PHẨM  -->
+<h2 class=" text-center mt-2 mb-4" style="color:#040501;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 2.3em;"><b>XE ĐẠP ĐIỆN THƯƠNG HIỆU DKBIKE</b></h2>
+
+<!-- Các sản phẩm nổi bật -->
+<div class="container">
+    <div class="row g-3">
+        <!-- Sản phẩm 1 -->
+        <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp5.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 1 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp1.DKBike.png" alt="Xe Đạp Điện Yadea X-Bull" >
+                    <h4><b>Xe Đạp Điện DK Sparta </b></h4>
+            
+                    <p class="product-old-price mb-0">15.490.000 đ</p>
+                    <p class="product-price">13.490.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Quà tặng trị giá tới 500K</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp5.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 2 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp2.DkBike.png" alt="Xe Đạp Điện Nijia Cap A - 2 Phanh Đĩa">
+                    <h4><b>Xe Đạp Điện DK Miku Max IV</b></h4>
+                    <p class="product-old-price mb-0">13.900.000 đ</p>
+                    <p class="product-price">12.200.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Quà tặng trị giá tới 500K</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp5.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 3 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp3.DkBike.png" alt="Xe Đạp Điện Xbull Việt Thái">
+                    <h4><b>Xe Đạp Điện DK 133M</b></h4>
+                    <p class="product-old-price mb-0">13.990.000 đ</p>
+                    <p class="product-price">11.990.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Tặng quà tặng khi mua xe</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp5.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Sản phẩm 4 -->
+         <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp1.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 4 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp4.DKBike.png" alt="Xe đạp điện 133 Osakar S8">
+                    <h4><b>Xe Đạp Điện DK Poke New III</b></h4>
+                    <p class="product-old-price mb-0">15.500.000 đ</p>
+                    <p class="product-price">14.500.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Tặng quà tặng khi mua xe</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp1.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp1.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Sản phẩm 5 -->
+         <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp2.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 5 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp5-Xe Đạp Điện DK Samurai 4.png" alt="Xe Đạp Điện DK Samurai 4">
+                    <h4><b>Xe Đạp Điện DK Samurai 4</b></h4>
+                    <p class="product-old-price mb-0">16.500.000 đ</p>
+                    <p class="product-price">15.800.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Tặng quà tặng khi mua xe</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp2.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp2.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Sản phẩm 6 -->
+         <div class="col-md-4">
+            <div class="product-card">
+                <a href="../html/sp6.html" class="text-decoration-none"> <!-- Liên kết tới trang sản phẩm 6 -->
+                    <span class="badge-new">HOT</span>
+                    <img src="../img/sp6.DKBike.png" alt="XE ĐẠP ĐIỆN Osakar Win@">
+                    <h4><B>Xe Đạp Điện DK Samurai III</B></h4>
+                    <p class="product-old-price mb-0">14.300.000 đ</p>
+                    <p class="product-price">12.500.000 đ</p>
+                </a>
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="product-info text-start">
+                        <p>- Tặng quà tặng khi mua xe</p>
+                        <p>- Áp dụng giao hàng toàn quốc</p>
+                    </div>
+                    <div class="product-actions text-end">
+                        <a href="../html/sp6.html">
+                            <button class="btn btn-danger btn-buy">MUA NGAY</button>
+                        </a>
+                        <a href="../html/sp6.html">
+                            <button class="btn btn-outline-primary btn-installment">THÊM VÀO GIỎ HÀNG</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Các chính sách -->
+<br><hr>
+<div style="display: flex; justify-content: space-between; gap: 20px;">
+    <div class="product-intro" style="flex: 1; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-size: 1.5em; color: #333;">Cách thức bảo quản</h2>
+      <p style="font-size: 1em; color: #666;">
+        Để duy trì tuổi thọ và hiệu suất của xe đạp điện, bạn cần thường xuyên vệ sinh xe và bảo quản đúng cách. Sau mỗi lần sử dụng, hãy làm sạch xe, đặc biệt là bộ phận động cơ và bánh xe. Đảm bảo sạc đầy pin và lưu trữ xe ở nơi khô ráo, thoáng mát, tránh tiếp xúc trực tiếp với ánh nắng mặt trời hoặc môi trường ẩm ướt.
+      </p>
+    </div>
+    <div class="product-intro" style="flex: 1; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-size: 1.5em; color: #333;">Chính sách đổi trả</h2>
+      <p style="font-size: 1em; color: #666;">
+        Xe đạp điện Paradise cam kết bảo hành 1 năm cho tất cả các sản phẩm. Chính sách đổi trả áp dụng cho xe có lỗi kỹ thuật hoặc bị hư hỏng trong quá trình vận chuyển. Chúng tôi hỗ trợ đổi trả trong vòng 30 ngày kể từ ngày nhận hàng. Mọi sản phẩm đổi trả cần đảm bảo còn nguyên vẹn và chưa qua sử dụng.
+      </p>
+    </div>
+    <div class="product-intro" style="flex: 1; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-size: 1.5em; color: #333;">Miễn phí vận chuyển</h2>
+      <p style="font-size: 1em; color: #666;">
+        Xe đạp điện Paradise cung cấp dịch vụ giao hàng miễn phí trên toàn quốc cho tất cả các đơn hàng. Dù bạn ở đâu, chúng tôi sẽ đảm bảo giao hàng nhanh chóng và an toàn đến tận nơi.
+      </p>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="text-white mt-4" style="background-color: #638889; padding: 0; margin: 0;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Dòng đầu: 4 cột -->
+            <div class="col-md-3 d-flex align-items-center py-3">
+                <img src="../img/logo.png" alt="Logo" style="max-width: 100px; transform: scale(1.2); margin-right: 10px;"> <!-- Hình ảnh logo -->
+                <span style="font-size: 1.3rem; color: hsl(78, 75%, 91%); font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b> E-Bike Paradise</b> </span> <!-- Tên cửa hàng -->
+            </div>
+
+            <!-- Cột 2: Chính sách bảo mật -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Chính sách bảo mật</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" class="text-white">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#" class="text-white">Chính sách đưa đón và giao hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Liên hệ với chúng tôi -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Liên hệ với chúng tôi</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">Địa chỉ: 123 Đường ABC, Quận Gò Vấp, TP.HCM</li>
+                    <li class="mb-2">Hotline: 0123 456 789</li>
+                    <li>Email: abc@gmail.com</li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Mạng xã hội -->
+            <div class="col-md-3 py-3">
+                <h5 class="text-uppercase" style="color: hsl(78, 75%, 91%);"><b>Mạng xã hội</b></h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li class="mb-2"><a href="#" class="text-white"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <li><a href="#" class="text-white"><i class="bi bi-tiktok"></i> TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng thứ hai: Thông tin bản quyền -->
+        <div class="text-center py-2 " style="background-color: #4f6d6e;" > <!-- Màu xám nhạt -->
+            <p class="mb-0" style="margin-bottom: 0;">&copy; 2024 E-Bike Paradise. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
