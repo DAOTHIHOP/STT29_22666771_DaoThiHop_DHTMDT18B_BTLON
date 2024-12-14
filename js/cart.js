@@ -2,9 +2,10 @@
 // Kiểm tra Họ và Tên
 function validateFullName() {
     const fullName = document.getElementById('fullName');
-    const nameRegex = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/;
+    const nameRegex =  /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/;
+   
     if (!nameRegex.test(fullName.value.trim())) {
-        document.getElementById('fullNameError').textContent = "Họ và tên phải bắt đầu bằng chữ hoa và không dấu.";
+        document.getElementById('fullNameError').textContent = "Họ tên tối thiểu 2 từ và phải bắt đầu bằng chữ hoa và không dấu.";
         fullName.classList.add('is-invalid');
         fullName.classList.remove('is-valid');
     } else {

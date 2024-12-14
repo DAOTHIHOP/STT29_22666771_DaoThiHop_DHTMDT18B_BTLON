@@ -2,7 +2,7 @@
 function validateName() {
     const name = document.getElementById('name');
     // Biểu thức chính quy: Chữ đầu tiên viết hoa, không dấu, và các ký tự tiếp theo là chữ thường
-    const nameRegex =  /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/; 
+    const nameRegex =  /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/;
     if (!nameRegex.test(name.value.trim())) {
         document.getElementById('nameError').textContent = "Họ và tên phải bắt đầu bằng chữ hoa và không dấu (Ví dụ: Nguyen Van A)";
         name.classList.add('is-invalid');

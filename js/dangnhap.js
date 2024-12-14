@@ -1,7 +1,6 @@
-// FORM ĐĂNG KÝ
-// Kiểm tra tên hợp lệ (chữ cái đầu viết hoa và không có dấu)
+// Kiểm tra tên hợp lệ (ít nhất 2 từ, chữ cái đầu viết hoa và không có dấu)
 function isValidName(name) {
-    const regex = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/; // Chỉ cho phép chữ hoa đầu và không có dấu
+    const regex = /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/; // Tối thiểu 2 từ và chữ hoa đầu
     return regex.test(name);
 }
 
@@ -17,205 +16,140 @@ function isValidPhone(phone) {
     return regex.test(phone);
 }
 
-// Kiểm tra mật khẩu hợp lệ (có ít nhất 6 ký tự và có cả chữ và số)
+// Kiểm tra mật khẩu hợp lệ (ít nhất 6 ký tự, bao gồm cả chữ và số)
 function isValidPassword(password) {
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return regex.test(password);
 }
 
-// Đổi màu viền khi hợp lệ hoặc không hợp lệ
-function setInputValidity(inputElement, isValid, errorElement) {
-    if (isValid) {
-        inputElement.classList.remove('invalid');
-        inputElement.classList.add('valid'); // Đổi màu viền xanh
-        errorElement.style.display = "none"; // Ẩn thông báo lỗi
+// Hiển thị hoặc ẩn lỗi
+function setError(element, message) {
+    const errorElement = element.nextElementSibling; // Phần tử hiển thị lỗi
+    if (message) {
+        errorElement.textContent = message;
+        errorElement.style.display = "block";
+        element.classList.add("is-invalid");
+        element.classList.remove("is-valid");
     } else {
-        inputElement.classList.remove('valid');
-        inputElement.classList.add('invalid'); // Đổi màu viền đỏ
-        errorElement.style.display = "inline"; // Hiện thông báo lỗi
+        errorElement.textContent = "";
+        errorElement.style.display = "none";
+        element.classList.add("is-valid");
+        element.classList.remove("is-invalid");
     }
 }
 
-// Xử lý sự kiện nhập liệu cho trường Name
-document.getElementById('nameInput').addEventListener('input', function() {
+// Xử lý sự kiện blur cho các trường form đăng ký
+document.getElementById("nameInput").addEventListener("blur", function () {
     const name = this.value.trim();
-    const nameError = document.getElementById('nameError');
-    const isValid = isValidName(name);
-    setInputValidity(this, isValid, nameError);
+    if (!name) {
+        setError(this, "Vui lòng không bỏ trống!");
+    } else if (!isValidName(name)) {
+        setError(this, "Họ tên phải gồm ít nhất 2 từ, viết hoa chữ cái đầu và không có dấu.");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Xử lý sự kiện nhập liệu cho trường Email/Phone
-document.getElementById('emailPhoneInput').addEventListener('input', function() {
+document.getElementById("emailPhoneInput").addEventListener("blur", function () {
     const input = this.value.trim();
-    const emailPhoneError = document.getElementById('emailPhoneError');
-    const isValid = isValidEmail(input) || isValidPhone(input);
-    setInputValidity(this, isValid, emailPhoneError);
+    if (!input) {
+        setError(this, "Vui lòng không bỏ trống!");
+    } else if (!isValidEmail(input) && !isValidPhone(input)) {
+        setError(this, "Email phải là @gmail.com hoặc số điện thoại phải bắt đầu bằng 0 và đủ 10 số.");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Xử lý sự kiện nhập liệu cho trường Password
-document.getElementById('loginPassword').addEventListener('input', function() {
+document.getElementById("loginPassword").addEventListener("blur", function () {
     const password = this.value.trim();
-    const passwordError = document.getElementById('loginPasswordError');
-    const isValid = isValidPassword(password);
-    setInputValidity(this, isValid, passwordError);
+    if (!password) {
+        setError(this, "Mật khẩu không được để trống!");
+    } else if (!isValidPassword(password)) {
+        setError(this, "Mật khẩu phải có ít nhất 6 ký tự, bao gồm cả chữ và số.");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Xử lý sự kiện nhập liệu cho trường Confirm Password
-document.getElementById('confirmLoginPassword').addEventListener('input', function() {
-    const password = document.getElementById('loginPassword').value.trim();
+document.getElementById("confirmLoginPassword").addEventListener("blur", function () {
+    const password = document.getElementById("loginPassword").value.trim();
     const confirmPassword = this.value.trim();
-    const passwordError = document.getElementById('passwordError');
-    const isValid = (password === confirmPassword);
-    setInputValidity(this, isValid, passwordError);
+    if (!confirmPassword) {
+        setError(this, "Vui lòng xác nhận mật khẩu!");
+    } else if (password !== confirmPassword) {
+        setError(this, "Mật khẩu xác nhận không khớp!");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Kiểm tra toàn bộ form trước khi gửi đi
+// Kiểm tra toàn bộ form đăng ký trước khi gửi
 function validateForm() {
-    const name = document.getElementById('nameInput').value.trim();
-    const emailPhone = document.getElementById('emailPhoneInput').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
-    const confirmPassword = document.getElementById('confirmLoginPassword').value.trim();
+    const nameInput = document.getElementById("nameInput");
+    const emailPhoneInput = document.getElementById("emailPhoneInput");
+    const passwordInput = document.getElementById("loginPassword");
+    const confirmPasswordInput = document.getElementById("confirmLoginPassword");
 
-    let isFormValid = true;
+    nameInput.dispatchEvent(new Event("blur"));
+    emailPhoneInput.dispatchEvent(new Event("blur"));
+    passwordInput.dispatchEvent(new Event("blur"));
+    confirmPasswordInput.dispatchEvent(new Event("blur"));
 
-    // Kiểm tra tên
-    if (!isValidName(name)) {
-        setInputValidity(document.getElementById('nameInput'), false, document.getElementById('nameError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('nameInput'), true, document.getElementById('nameError'));
-    }
-
-    // Kiểm tra email hoặc số điện thoại
-    if (!isValidEmail(emailPhone) && !isValidPhone(emailPhone)) {
-        setInputValidity(document.getElementById('emailPhoneInput'), false, document.getElementById('emailPhoneError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('emailPhoneInput'), true, document.getElementById('emailPhoneError'));
-    }
-
-    // Kiểm tra mật khẩu
-    if (!isValidPassword(password)) {
-        setInputValidity(document.getElementById('loginPassword'), false, document.getElementById('loginPasswordError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('loginPassword'), true, document.getElementById('loginPasswordError'));
-    }
-
-    // Kiểm tra mật khẩu xác nhận
-    if (password !== confirmPassword) {
-        setInputValidity(document.getElementById('confirmLoginPassword'), false, document.getElementById('passwordError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('confirmLoginPassword'), true, document.getElementById('passwordError'));
-    }
-
-    // Nếu form hợp lệ, hiển thị thông báo và chuyển hướng
-    if (isFormValid) {
+    const invalidElements = document.querySelectorAll(".is-invalid");
+    if (invalidElements.length === 0) {
         alert("Đăng ký thành công!");
         window.location.href = "Trangchu.html"; // Chuyển sang trang chủ
-    }
-}
-
-
-
-// FORM ĐĂNG NHẬP
-// Kiểm tra email hợp lệ
-function isValidEmail(email) {
-    const regex = /^[^\s@]+@gmail\.com$/;
-    return regex.test(email);
-}
-
-// Kiểm tra số điện thoại hợp lệ (10 số và bắt đầu bằng số 0)
-function isValidPhone(phone) {
-    const regex = /^0[0-9]{9}$/;
-    return regex.test(phone);
-}
-
-// Kiểm tra mật khẩu
-function validatePassword() {
-    const password = document.getElementById('Password');
-    const passwordError = document.getElementById('passwordError');
-
-    // Kiểm tra nếu trường mật khẩu trống
-    if (password.value.trim() === "") {
-        password.classList.add('is-invalid');
-        passwordError.textContent = "Mật khẩu không được để trống.";
-        return false;
     } else {
-        password.classList.remove('is-invalid');
-        passwordError.textContent = "";
-        return true;
+        alert("Vui lòng kiểm tra lại thông tin trước khi gửi!");
     }
 }
 
-// Đổi màu viền và hiện/ẩn thông báo lỗi khi hợp lệ hoặc không hợp lệ
-function setInputValidity(inputElement, isValid, errorElement) {
-    if (isValid) {
-        inputElement.classList.remove('invalid');
-        inputElement.classList.add('valid'); // Đổi màu viền xanh
-        errorElement.style.display = "none"; // Ẩn thông báo lỗi
-    } else {
-        inputElement.classList.remove('valid');
-        inputElement.classList.add('invalid'); // Đổi màu viền đỏ
-        errorElement.style.display = "inline"; // Hiện thông báo lỗi
-    }
-}
-
-// Xử lý sự kiện nhập liệu cho trường Email/Phone đăng nhập
-document.getElementById('loginEmailPhone').addEventListener('input', function() {
+// Xử lý form đăng nhập
+document.getElementById("loginEmailPhone").addEventListener("blur", function () {
     const input = this.value.trim();
-    const loginEmailPhoneError = document.getElementById('loginEmailPhoneError');
-    const isValid = isValidEmail(input) || isValidPhone(input);
-    setInputValidity(this, isValid, loginEmailPhoneError);
+    if (!input) {
+        setError(this, "Vui lòng không bỏ trống!");
+    } else if (!isValidEmail(input) && !isValidPhone(input)) {
+        setError(this, "Email phải là @gmail.com hoặc số điện thoại bắt đầu bằng 0 và có đủ 10 số.");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Xử lý sự kiện nhập liệu cho trường Password đăng nhập
-document.getElementById('Password').addEventListener('input', function() {
-    validatePassword(); // Gọi hàm kiểm tra mật khẩu để cập nhật thông báo lỗi
+document.getElementById("Password").addEventListener("blur", function () {
+    const password = this.value.trim();
+    if (!password) {
+        setError(this, "Mật khẩu không được để trống!");
+    } else if (!isValidPassword(password)) {
+        setError(this, "Mật khẩu phải có ít nhất 6 ký tự, bao gồm cả chữ và số.");
+    } else {
+        setError(this, "");
+    }
 });
 
-// Kiểm tra toàn bộ form đăng nhập
 function validateLoginForm() {
-    const emailPhone = document.getElementById('loginEmailPhone').value.trim();
-    const password = document.getElementById('Password').value.trim();
+    const loginEmailPhone = document.getElementById("loginEmailPhone");
+    const password = document.getElementById("Password");
 
-    let isFormValid = true;
+    loginEmailPhone.dispatchEvent(new Event("blur"));
+    password.dispatchEvent(new Event("blur"));
 
-    // Kiểm tra email hoặc số điện thoại
-    if (!isValidEmail(emailPhone) && !isValidPhone(emailPhone)) {
-        setInputValidity(document.getElementById('loginEmailPhone'), false, document.getElementById('loginEmailPhoneError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('loginEmailPhone'), true, document.getElementById('loginEmailPhoneError'));
-    }
-
-    // Kiểm tra mật khẩu
-    if (!validatePassword()) {
-        setInputValidity(document.getElementById('Password'), false, document.getElementById('passwordError'));
-        isFormValid = false;
-    } else {
-        setInputValidity(document.getElementById('Password'), true, document.getElementById('passwordError'));
-    }
-
-    // Kiểm tra xem người dùng có tick ô "Ghi nhớ tài khoản" hay không
-    const rememberMe = document.getElementById('rememberMe').checked;
-
-    if (isFormValid) {
-        if (!rememberMe) {
-            const confirmRemember = confirm("Bạn có muốn ghi nhớ tài khoản cho lần đăng nhập tiếp theo không?");
-            if (confirmRemember) {
-                alert("Đăng nhập thành công!"); // Hiển thị thông báo
-                window.location.href = "Trangchu.html"; // Chuyển sang trang chủ
+    const invalidElements = document.querySelectorAll(".is-invalid");
+    if (invalidElements.length === 0) {
+        const rememberMe = document.getElementById("rememberMe").checked;
+        if (rememberMe) {
+            if (confirm("Bạn có muốn ghi nhớ tài khoản cho lần đăng nhập tiếp theo?")) {
+                alert("Đăng nhập thành công!");
+                window.location.href = "Trangchu.html";
             } else {
-                alert("Bạn đã chọn không ghi nhớ tài khoản cho lần đăng nhập tiếp theo.");
-                window.location.href = "Trangchu.html"; // Chuyển sang trang chủ
+                window.location.href = "Trangchu.html";
             }
         } else {
-            alert("Đăng nhập thành công!"); // Hiển thị thông báo
-            window.location.href = "Trangchu.html"; // Chuyển sang trang chủ
+            alert("Đăng nhập thành công!");
+            window.location.href = "Trangchu.html";
         }
     } else {
-        alert("Vui lòng nhập đầy đủ thông tin trước khi đăng nhập!"); // Thông báo khi thiếu thông tin
+        alert("Vui lòng kiểm tra lại thông tin đăng nhập!");
     }
 }
