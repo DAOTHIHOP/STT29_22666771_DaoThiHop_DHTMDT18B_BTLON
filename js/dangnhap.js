@@ -111,7 +111,7 @@ document.getElementById("loginEmailPhone").addEventListener("blur", function () 
     if (!input) {
         setError(this, "Vui lòng không bỏ trống!");
     } else if (!isValidEmail(input) && !isValidPhone(input)) {
-        setError(this, "Email phải là @gmail.com hoặc số điện thoại bắt đầu bằng 0 và có đủ 10 số.");
+        setError(this, "Email phải có @gmail.com hoặc số điện thoại bắt đầu bằng 0 và có đủ 10 số.");
     } else {
         setError(this, "");
     }
@@ -127,6 +127,7 @@ document.getElementById("Password").addEventListener("blur", function () {
         setError(this, "");
     }
 });
+
 
 function validateLoginForm() {
     const loginEmailPhone = document.getElementById("loginEmailPhone");
